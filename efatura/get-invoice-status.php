@@ -1,3 +1,3 @@
 <?php
-	echo '<h1>create e-invoice</h1>';
+	echo '<h1>get invoice status</h1>';
 ?>
