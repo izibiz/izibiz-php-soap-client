@@ -14,7 +14,7 @@
             header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
         if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-            header("Access-Control-Allow-Headers:        {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+            header("Access-Control-Allow-Headers:{$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
 
         exit(0);
     }
@@ -24,8 +24,8 @@
     $postdata = file_get_contents("php://input");
     if (isset($postdata)) {
         $request = json_decode($postdata);
-        $username = "izibiz-dev";//$request->username;
-        $password = "izi3212";//$request ->password;
+        $username = "izibiz-test2";//$request->username;
+        $password = "izi321";//$request ->password;
 
 
         if ($username != "" && $password != "" ) {
@@ -37,17 +37,17 @@
 		$trace = true;
 		$exceptions = false;
 
-			$xml_array -> REQUEST_HEADER -> SESSION_ID  = '';
-
+			$xml_array -> REQUEST_HEADER -> SESSION_ID  = '-1';
+      $xml_array -> REQUEST_HEADER -> APPLICATION_NAME  = 'i';
 			$xml_array -> USER_NAME = $username;
 			$xml_array -> PASSWORD = $password;
 
 try
 {
-   $client = new SoapClient($eFatura, array('trace' => $trace, 'exceptions' => $exceptions));
+   $client = new SoapClient($auth, array('trace' => $trace, 'exceptions' => $exceptions));
    $response = $client->Login($xml_array);
    echo $response->SESSION_ID;
-echo $response->faultstring;
+   echo $response->faultstring;
 }
 
 catch (SoapFault $e)
