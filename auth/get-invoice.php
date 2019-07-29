@@ -1,6 +1,8 @@
 <?php   
     include '../servisLinkleri.php';
     error_reporting(0);
+    //$eFatura = 'https://efaturadev.izibiz.com.tr:443/EFaturaOIB?wsdl';
+
     if (isset($_SERVER['HTTP_ORIGIN'])) {
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
         header('Access-Control-Allow-Credentials: true');
@@ -25,7 +27,7 @@
     if (isset($postdata)) {
         $request = json_decode($postdata);
         //Login ekranından alınacak
-        $session = '4a9371c7-d8f0-4057-8001-226b11c6727b';
+        $session = 'd4b32fc1-feb0-4266-bdc4-56c6a46ea859';
         $compressed='Y';
         
 
@@ -53,8 +55,8 @@ try
     
    $client = new SoapClient($eFatura, array('trace' => $trace, 'exceptions' => $exceptions));
    $response = $client->GetInvoice($xml_array);
-  //echo "<pre>";
-    //print_r($response);
+      //echo "<pre>";
+      //print_r($response);
 
      foreach ($response->INVOICE as $list) {
             echo "<tr id='baslik' align='left'>";
@@ -162,8 +164,8 @@ function saveUnZip($_faturano){
    $zip = new ZipArchive;
    $res = $zip->open('ContentZip/'.$_faturano.'.zip');
    if ($res === TRUE) {
-     echo 'Tamam';
-     echo $_faturano;
+     //echo 'Tamam';
+     //echo $_faturano;
      $zip->extractTo('contentUnZip');
      $zip->close();
 }  else {

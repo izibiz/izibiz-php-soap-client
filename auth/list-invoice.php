@@ -4,7 +4,7 @@
   <div class="form-body" style="width: auto; float: left;">
     <h1>Faturalar Tablosu</h1>
 <form action="list-invoice.php" method="POST">
-<input type="submit" value="Yeni Fatura Al" name="silbuton" style="margin-bottom: 10px;">
+<input type="submit" value="Yeni Fatura Al" name="yenifatura" style="margin-bottom: 10px;">
 <input type="submit" value="Durum Sorgula" name="silbuton" style="margin-bottom: 10px;">
 <input type="submit" value="Yanıt Gönder" name="silbuton" style="margin-bottom: 10px;">
 <table border="1" id="kayitlar" cellpadding="5" width="1300px" cellspacing="0">
@@ -24,7 +24,7 @@
 
 </tr>
 <?php
-if(isset($_POST["silbuton"])){
+if(isset($_POST["yenifatura"])){
  include 'get-invoice.php';
 }
 ?>
