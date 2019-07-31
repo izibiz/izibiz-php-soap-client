@@ -7,6 +7,7 @@ $session_ID="";
     ini_set('display_errors','on');
     error_reporting(0);
     
+
     if (isset($_SERVER['HTTP_ORIGIN'])) {
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
         header('Access-Control-Allow-Credentials: true');
@@ -45,19 +46,19 @@ $session_ID="";
 		$exceptions = false;
 
 			$xml_array -> REQUEST_HEADER -> SESSION_ID  = '';
-
+      $xml_array -> REQUEST_HEADER -> APPLICATION_NAME  = 's';
 			$xml_array -> USER_NAME = $username;
 			$xml_array -> PASSWORD = $password;
-      
+     
 try
 {
-   $client = new SoapClient($eFatura, array('trace' => $trace, 'exceptions' => $exceptions));
+  $client = new SoapClient($eFatura, array('trace' => $trace, 'exceptions' => $exceptions));
    //echo "Client oluşturuldu";
    $response = $client->Login($xml_array);
    $session_ID=$response->SESSION_ID;
 
   
-   //echo $response->faultstring;
+   echo $response->faultstring;
    
 }
 
