@@ -7,7 +7,7 @@
 
 		echo '<h1>IZIBIZ Webservice Entegrasyon Projesi - PHP</h1>';
 		echo '<h2>MÜKELLEF SERVİSİ (Kimlik Doğrulama Servisi)</h2>';
- 		echo '<a href="auth/login.php">Oturum Aç / Kapat</a><br>';
+ 		echo '<a href="auth/authentication.php">Oturum Aç / Kapat</a><br>';
 		echo '<a href="auth/get-gib-user-list.php">Mükellef Listesi Çek</a><br>';
 
     echo '<a href="efatura/einvoice-demo.php">E-Fatura Demo</a><br>';
