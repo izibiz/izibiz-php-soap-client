@@ -24,8 +24,8 @@
     $postdata = file_get_contents("php://input");
     if (isset($postdata)) {
         $request = json_decode($postdata);
-        $username = "izibiz-test2";//$request->username;
-        $password = "izi321";//$request ->password;
+        $username = "";//$request->username;
+        $password = "";//$request ->password;
 
 
         if ($username != "" && $password != "" ) {
