@@ -38,7 +38,6 @@ class EDespatchTest extends PHPUnit\Framework\TestCase
         $GLOBALS['path'] = $request['SEARCH_KEY']['DIRECTION'] == "IN" ? $GLOBALS['EDespatchFolderPath'] . "\GelenKutusu" : ($request['SEARCH_KEY']['DIRECTION'] == "OUT" ? $GLOBALS['EDespatchFolderPath'] . "\GidenKutusu" : $GLOBALS['EDespatchFolderPath'] . "\Taslakİrsaliye");
         $this->assertTrue((array)$response->DESPATCHADVICE > 0);
         $GLOBALS['EDespatchsUUID'] = [];
-       // file_put_contents('C:\Users\meryem.aksu\Desktop\despatc\deneme2.xml', (array)$response->DESPATCHADVICE[0]->CONTENT);
         foreach ($response->DESPATCHADVICE as $despatch) {
             echo  $despatch->UUID;
             array_push($GLOBALS['EDespatchsUUID'], $despatch->UUID);
@@ -126,10 +125,8 @@ class EDespatchTest extends PHPUnit\Framework\TestCase
         $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE,0);
     }
 
-   // public function testMarkDespatchAdvice()
     public function testMarkDespatchAdvice()
-    {//HATA 
-       // echo gettype($GLOBALS['EDespatchsUUID']);
+    {
         $request = array(
             'REQUEST_HEADER' => array(
                 "SESSION_ID" => $GLOBALS['sessionId'],

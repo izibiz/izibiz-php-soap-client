@@ -70,7 +70,6 @@ class EInvoiceTest extends PHPUnit\Framework\TestCase
     }
     $this->assertTrue((array)$response->INVOICE > 0);
     $GLOBALS['operations']->fileExists($GLOBALS['EInvoiceFolderPath']);
-    //$GLOBALS['path'] = $request['INVOICE_SEARCH_KEY']['DIRECTION'] == "IN" ? $GLOBALS['EInvoiceFolderPath'] . "\.GelenKutusu" : ($request['INVOICE_SEARCH_KEY']['DIRECTION'] == "OUT" ? $GLOBALS['EInvoiceFolderPath'] . "\.GidenKutusu" : $GLOBALS['EInvoiceFolderPath'] . "\.TaslakFatura");
     $fileexists = $GLOBALS['operations']->fileExists($GLOBALS['path']);
     $DocumentType = $request['INVOICE_SEARCH_KEY']['TYPE'] == "XML" ? $request['INVOICE_SEARCH_KEY']['UUID'] . ".xml" : ($request['INVOICE_SEARCH_KEY']['TYPE'] == "PDF" ? $request['INVOICE_SEARCH_KEY']['UUID'] . ".pdf" : $request['INVOICE_SEARCH_KEY']['UUID'] . ".html");
     $saveToDisk = $GLOBALS['path'] . "\.$DocumentType";
@@ -103,12 +102,6 @@ class EInvoiceTest extends PHPUnit\Framework\TestCase
     $Invoice = new SimpleXMLElement($GLOBALS['EInvoiceXml']);
     $Invoice->registerXPathNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
     $GLOBALS['content'] = str_replace('<?xml version="1.0"?>', '', $Invoice->asXML());
-
-    // $GLOBALS['ID'] = $Invoice->xpath('//cbc:ID');
-    // $GLOBALS['UUID'] = $Invoice->xpath('//cbc:UUID');
-
-    // $dosya = fopen('app/EInvoiceTemplate.xml', 'r');
-    // $content = file_get_contents('app/EInvoiceTemplate.xml');
 
     $output = 'ZipEInvoice.zip';
     $zip = new ZipArchive;
@@ -162,7 +155,6 @@ class EInvoiceTest extends PHPUnit\Framework\TestCase
 
     $response = $GLOBALS['client']->__soapCall("SendInvoice", array($request));
     echo ($GLOBALS['client']->__getLastResponse());
-  //  file_put_contents('C:\Users\meryem.aksu\Desktop\request.xml', $GLOBALS['client']->__getLastRequest());
     if (in_array("ERROR_TYPE", (array)$response)) {
       $this->assertNull($response->ERROR_TYPE);
     }

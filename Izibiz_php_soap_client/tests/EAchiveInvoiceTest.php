@@ -200,7 +200,6 @@ class EAchiveInvoiceTest extends PHPUnit\Framework\TestCase
     $response = $GLOBALS['client']->__soapCall("GetEArchiveReport", array($request));
     $GLOBALS['EArchiveReport'] = $GLOBALS['EArchiveFolderPath'] . "\EArchiveReport";
     $GLOBALS['operations']->fileExists($GLOBALS['EArchiveReport']);
-   // file_put_contents($GLOBALS['EArchiveReport'] . '\\' . $request['REPORT_PERIOD'] . '.xml', json_encode((array)$response->REPORT));
     if ($request['REPORT_STATUS_FLAG'] == 'N') {
       file_put_contents($GLOBALS['EArchiveReport'] . '\\' . $request['REPORT_PERIOD'] . '.xml', json_encode((array)$response->REPORT));
       file_put_contents($GLOBALS['EArchiveReport'] . '\\' . $request['REPORT_PERIOD'] . '.xml', json_encode((array)$response->INVOICE), FILE_APPEND);
@@ -212,11 +211,10 @@ class EAchiveInvoiceTest extends PHPUnit\Framework\TestCase
   }
 
   public function testReadEArchiveReport()
-  { //BAK
+  { 
     $request = array(
       'REQUEST_HEADER' => array(
         "SESSION_ID" => $GLOBALS['sessionId'],
-        //"COMPRESSED" => 'Y',
         "APPLICATION_NAME" => 'Izibiz_php_soap_client.Application'
       ),
       'RAPOR_NO' => $GLOBALS['ReportNo'][0],

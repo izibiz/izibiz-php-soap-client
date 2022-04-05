@@ -61,11 +61,10 @@ public function testSendReconciliation()
         $GLOBALS['client'] = new SoapClient($GLOBALS['baseURL'].'/ReconciliationWS?wsdl', array('trace' => 1, 'exceptions' => 1));
          $response = $GLOBALS['client']->__soapcall('SendReconciliation',array($request));
          echo ($GLOBALS['client']->__getLastResponse());
-         echo '-----------------------------------';
-                 // if (in_array("ERROR_TYPE", (array)$response)) {
-        //     $this->assertNull($response->ERROR_TYPE);
-        // }
-        // $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE, 0);
+                 if (in_array("ERROR_TYPE", (array)$response)) {
+            $this->assertNull($response->ERROR_TYPE);
+        }
+        $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE, 0);
 
     }
 
@@ -87,13 +86,13 @@ public function testSendReconciliation()
         $response = $GLOBALS['client']->__soapCall("SendMailReconciliation", array($request));
         echo ($GLOBALS['client']->__getLastResponse());
         echo '-----------------------------------';
-        //   if (in_array("ERROR_TYPE", (array)$response)) {
-        //     $this->assertNull($response->ERROR_TYPE);
-        // }
-        // $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE, 0);
-        // $GLOBALS['EReconciliationFolderPath'] = $GLOBALS['homeFilePath']."\EReconciliation";
-        // $GLOBALS['operations']->fileExists($GLOBALS['EReconciliationFolderPath']);
-        // file_put_contents($GLOBALS['EReconciliationFolderPath'] . "\EReceiptGetStatus.xml", $GLOBALS['client']->__getLastResponse());
+          if (in_array("ERROR_TYPE", (array)$response)) {
+            $this->assertNull($response->ERROR_TYPE);
+        }
+        $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE, 0);
+        $GLOBALS['EReconciliationFolderPath'] = $GLOBALS['homeFilePath']."\EReconciliation";
+        $GLOBALS['operations']->fileExists($GLOBALS['EReconciliationFolderPath']);
+        file_put_contents($GLOBALS['EReconciliationFolderPath'] . "\EReceiptGetStatus.xml", $GLOBALS['client']->__getLastResponse());
     }
 
 
@@ -119,12 +118,10 @@ public function testSendReconciliation()
         }
          $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE, '0');
 
-        //   if (in_array("ERROR_TYPE", (array)$response)) {
-        //     $this->assertNull($response->ERROR_TYPE);
-        // }
-        // $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE, 0);
-        $GLOBALS['EReconciliationFolderPath'] = $GLOBALS['homeFilePath']."\EReconciliation";
-        $GLOBALS['operations']->fileExists($GLOBALS['EReconciliationFolderPath']);
+          if (in_array("ERROR_TYPE", (array)$response)) {
+            $this->assertNull($response->ERROR_TYPE);
+        }
+        $this->assertEquals($response->REQUEST_RETURN->RETURN_CODE, 0);
         file_put_contents($GLOBALS['EReconciliationFolderPath'] . "\EReceiptGetStatus.xml", $GLOBALS['client']->__getLastResponse());
     }
 

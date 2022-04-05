@@ -12,9 +12,7 @@ class ESmmTest extends PHPUnit\Framework\TestCase
 {
     public function testGetSmm()
     {
-      
-
-        $request = array(
+     $request = array(
             'REQUEST_HEADER' => array(
                 "SESSION_ID" => $GLOBALS['sessionId'],
                 "COMPRESSED" => 'Y',
@@ -22,7 +20,6 @@ class ESmmTest extends PHPUnit\Framework\TestCase
             ),
             'SMM_SEARCH_KEY' => array(
                 'LIMIT' => 10,
-                //'READ_INCLUDED' => 'N' ,
                 'READ_INCLUDED' => TRUE,
                 "START_DATE" => date("Y-m-d", mktime(0, 0, 0, date("m") - 6, date("d") - 20, date("Y"))),
                 "END_DATE" => date("Y-m-d"),
@@ -96,9 +93,6 @@ class ESmmTest extends PHPUnit\Framework\TestCase
         $Invoice->registerXPathNamespace('cbc', 'urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2');
         $GLOBALS['content'] = str_replace('<?xml version="1.0"?>', '', $Invoice->asXML());
 
-        // $GLOBALS['ID'] = $Invoice->xpath('//cbc:ID');
-        // $GLOBALS['UUID'] = $Invoice->xpath('//cbc:UUID');
-
         $output = 'ESmm.zip';
         $zip = new ZipArchive;
         if ($zip->open($output, ZipArchive::CREATE) == FALSE) {
@@ -136,14 +130,6 @@ class ESmmTest extends PHPUnit\Framework\TestCase
 
     public function testSendSmm()
     {
-
-    //    // echo gettype($GLOBALS['ID'][0]);
-    // $Id=(string)$GLOBALS['ID'][0];
-    // echo $Id;
-    // $Uuid=(string)$GLOBALS['UUID'][0];
-    // // echo gettype($Uuid);
-    //  echo $Uuid;
-    echo $GLOBALS['Id'];
         $request = array(
             'REQUEST_HEADER' => array(
                 "SESSION_ID" => $GLOBALS['sessionId'],
@@ -180,7 +166,7 @@ class ESmmTest extends PHPUnit\Framework\TestCase
         'UUID'=>'2af2f31c-02d6-42a1-882a-2b5a83ffeded'
         );
         $response = $GLOBALS['client']->__soapcall('CancelSmm',array($request));
-       // echo ($GLOBALS['client']->__getLastResponse());
+        echo ($GLOBALS['client']->__getLastResponse());
     }
 
 }
