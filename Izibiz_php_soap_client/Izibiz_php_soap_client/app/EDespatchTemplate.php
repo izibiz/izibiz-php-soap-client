@@ -1,4 +1,10 @@
 <?php
+
+use SemiorbitGuid\Guid;
+
+$Id='DSP' . date("Y") . rand(100000000, 999999999);
+$uuid= substr(Guid::NewGuid(), 1, -1);
+
 $xml=<<<XML
 
 <DespatchAdvice xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2 ../xsdrt/maindoc/UBL-DespatchAdvice-2.1.xsd" xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:n4="http://www.altova.com/samplexml/other-namespace">
@@ -10,9 +16,9 @@ $xml=<<<XML
 	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
 	<cbc:CustomizationID>TR1.2.1</cbc:CustomizationID>
 	<cbc:ProfileID>TEMELIRSALIYE</cbc:ProfileID>
-	<cbc:ID>CIR2021020000589</cbc:ID>
+	<cbc:ID>$Id</cbc:ID>
 	<cbc:CopyIndicator>false</cbc:CopyIndicator>
-	<cbc:UUID>373c6ce9-a72f-4832-9bbc-a3f018cf5790</cbc:UUID>
+	<cbc:UUID>$uuid</cbc:UUID>
 	<cbc:IssueDate>2022-03-25</cbc:IssueDate>
 	<cbc:IssueTime>14:31:04</cbc:IssueTime>
 	<cbc:DespatchAdviceTypeCode>SEVK</cbc:DespatchAdviceTypeCode>

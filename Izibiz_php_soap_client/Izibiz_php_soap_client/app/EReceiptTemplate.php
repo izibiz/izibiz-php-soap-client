@@ -1,20 +1,27 @@
 <?php
+
+use SemiorbitGuid\Guid;
+
+$Id='SMM' . date("Y") . rand(100000000, 999999999);
+$uuid= substr(Guid::NewGuid(), 1, -1);
+
+
 $xmlReceipt=<<<XML
 <ReceiptAdvice xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2 ../xsdrt/maindoc/UBL-ReceiptAdvice-2.1.xsd" xmlns="urn:oasis:names:specification:ubl:schema:xsd:ReceiptAdvice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:n4="http://www.altova.com/samplexml/other-namespace">
   <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
   <cbc:CustomizationID>TR1.2.1</cbc:CustomizationID>
   <cbc:ProfileID>TEMELIRSALIYE</cbc:ProfileID>
-  <cbc:ID>DMY2022318900767</cbc:ID>
+  <cbc:ID>$Id</cbc:ID>
   <cbc:CopyIndicator>false</cbc:CopyIndicator>
-  <cbc:UUID>49d665a7-781f-4dec-ae26-441833af383e</cbc:UUID>
+  <cbc:UUID>$uuid</cbc:UUID>
   <cbc:IssueDate>2022-03-14</cbc:IssueDate>
   <cbc:IssueTime>15:32:04.0000000+03:00</cbc:IssueTime>
   <cbc:ReceiptAdviceTypeCode>SEVK</cbc:ReceiptAdviceTypeCode>
   <cbc:Note>Denemedir</cbc:Note>
   <cbc:LineCountNumeric>1</cbc:LineCountNumeric>
   <cac:DespatchDocumentReference>
-    <cbc:ID>c8981eb7-4e1e-4753-90ae-3b9317aa9740</cbc:ID>
-    <cbc:IssueDate>2022-03-28</cbc:IssueDate>
+    <cbc:ID>421b95e9-b3a9-472c-ab80-6b32606b1972</cbc:ID>
+    <cbc:IssueDate>2021-12-10</cbc:IssueDate>
   </cac:DespatchDocumentReference>
   <cac:AdditionalDocumentReference>
     <cbc:ID>00da9024-99a9-416b-a6a4-e613e7cf6361</cbc:ID>
@@ -25,7 +32,7 @@ $xmlReceipt=<<<XML
     </cac:Attachment>
   </cac:AdditionalDocumentReference>
   <cac:AdditionalDocumentReference>
-    <cbc:ID>RTY2022000000031</cbc:ID>
+    <cbc:ID>UGR2021000000044</cbc:ID>
     <cbc:IssueDate>2022-03-14</cbc:IssueDate>
     <cbc:DocumentTypeCode>DespatchAdviceID</cbc:DocumentTypeCode>
     <cbc:DocumentType>DespatchAdviceID</cbc:DocumentType>
